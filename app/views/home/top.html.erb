@@ -1,0 +1,48 @@
+<main>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="main-logo">
+                    <p class="text-center">Reviewbox</p>
+                </div>
+            </div>
+        </div>
+    </container>
+   
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="mx-auto">
+                    <%= form_tag("/posts/search") do %>
+                        <form method="post" action="/posts/search" class="search_container">
+                        <input type="text" name="search" size="40" placeholder="タイトル、ジャンル、人名">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                　　      </form>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+　  </div>
+   
+　 
+</main>
+
+<footer>
+        
+            <div class="footer-list">
+                <ul>
+                    <li><%= link_to("お問い合わせ", "/") %></li>
+                    <% if @current_user.id == 14 %>
+                    <li><%= link_to("作品追加", "/posts/new") %></li>
+                    <% end %>
+                </ul>
+            </div>
+    
+</footer>
+
+
+
+
+
+

@@ -1,0 +1,527 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* posts/index ================================ */
+.genre-select>ul{
+}
+
+.genre-select>ul>.active{
+  border-bottom: 3px solid red;
+  color: #57575f;
+}
+
+.genre-select>ul>li{
+  float:left;
+  width:14%;
+  font-size:20px;
+  line-height:15px;
+  }
+
+.posts-index-item {
+  padding:20px;
+  background-color:white;
+  box-shadow: 0 2px 12px #c1ced7;
+  height:210px;
+}
+
+.index-head{
+  height:50px;
+}
+
+.post-name{
+  height:50px;
+  float:left;
+  font-size:0px;
+}
+
+.post-name a{
+    padding-left:70px;
+    font-size: 30px;
+    color:black;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.post-name a:hover{
+  color:red;
+  text-decoration:none;
+}
+
+.index-rating{
+  float:left;
+  font-size:0;
+  padding-left:25px;
+}
+
+.index-rating i{
+  line-height:38px;
+}
+
+.index-rating span{
+  font-size:20px;
+  padding-left:5px;
+}
+
+.post-count{
+  height:35px;
+  font-size:0;
+}
+
+.index-like{
+  font-size:20px;
+  float:left;
+  
+}
+
+.index-like a{
+  text-decoration:none;
+  color:red;
+  padding-left:30px;
+}
+
+.index-like-count{
+  padding-left:10px;
+  float:left;
+  line-height:35px;
+  font-size:20px;
+  width:180px;
+}
+
+.index-like-count a{
+  color:black;
+  text-decoration:none;
+  padding-left:5px;
+}
+
+.index-like-count a:hover{
+  color:red;
+  text-decoration:none;
+}
+
+.comment-count{
+  font-size:20px;
+  float:left;
+  line-height:35px;
+}
+
+.comment-count a{
+  text-decoration:none;
+  color:black;
+  padding-left:5px;
+}
+
+.comment-count a:hover{
+  color:red;
+  text-decoration:none;
+}
+
+.post-genre{
+  padding-left:30px;
+  height:10px;
+}
+
+.post-genre a{
+  color:red;
+  text-decoration:none;
+  font-size: 20px;
+  font-weight:bold;
+}
+
+.post-info-space{
+  font-size:0;
+}
+
+.post-info span{
+  padding-left:30px;
+  font-size:15px;
+}
+
+.post-info a{
+  text-decoration:none;
+  color:black;
+  font-size:20px;
+}
+
+.post-info a:hover{
+  color:red;
+}
+
+.post-content{
+  padding-top:5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width:1000px;
+}
+
+@media screen and (max-width: 670px){
+    .genre-select{
+    width:100%;
+    overflow-x:scroll;
+    overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
+    }
+    
+    .genre-select>ul{
+      white-space: nowrap;
+    }
+    
+      .genre-select>ul>.active{
+      border-bottom: 2px solid red;
+    }
+    
+    .genre-select>ul>li{
+      font-size:10px;
+      width:55px;
+      display: inline-block;
+      white-space:normal;
+    }
+  
+      .posts-index-item {
+      padding:5px;
+      width:100%;
+      height:155px;
+    }
+    
+    .index-head{
+      height:auto;
+    }
+    
+    .post-name{
+      height:30px;
+      float:left;
+      font-size:0px;
+      padding-top:10px;
+      width:100%;
+      overflow:hidden;
+    }
+    
+    .post-name a{
+        padding-left:30px;
+        font-size: 12px;;
+    }
+    
+    .index-rating{
+      clear:both;
+      font-size:0;
+      padding-left:25px;
+      width:100%;
+    }
+    
+    .index-rating i{
+      line-height:38px;
+    }
+    
+    .index-rating span{
+      font-size:15px;
+      padding-left:10px;
+    }
+    
+     .post-count{
+      height:auto;
+      font-size:0;
+      width: 100%;
+    }
+    
+    .index-like{
+      font-size:15px;
+      float:left;
+      
+    }
+    
+    .index-like a{
+      text-decoration:none;
+      color:red;
+      padding-left:15px;
+    }
+    
+    .index-like-count{
+      padding-left:10px;
+      float:left;
+      line-height:15px;
+      font-size:20px;
+      width:100px;
+    }
+    
+    .index-like-count>span{
+      font-size:10px;
+    }
+    
+    .index-like-count a{
+      color:black;
+      text-decoration:none;
+      padding-left:5px;
+    }
+    
+    .comment-count{
+      font-size:20px;
+      float:left;
+      line-height:15px;
+    }
+    
+    .comment-count>span{
+      font-size:10px;
+    }
+    
+    .comment-count a{
+      text-decoration:none;
+      color:black;
+      padding-left:5px;
+    }
+    
+    .comment-count a:hover{
+      color:red;
+      text-decoration:none;
+    }
+    
+    .post-genre{
+      padding-left:30px;
+      height:2px;
+      clear:both;
+    }
+    
+    .post-genre>span{
+      font-size:10px;
+    }
+    
+    .post-genre a{
+      color:red;
+      text-decoration:none;
+      font-size: 15px;
+      font-weight:bold;
+    }
+    
+    .post-info-space{
+      font-size:0;
+    }
+    
+    .post-info span{
+      padding-left:30px;
+      font-size:10px;
+    }
+    
+    .post-info a{
+      text-decoration:none;
+      color:black;
+      font-size:10px;
+    }
+    
+    .post-info a:hover{
+      color:red;
+    }
+    
+    .post-content{
+      padding-top:2px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width:100%;
+      font-size:10px;
+    }
+    .post-content>span{
+      font-size:10px;
+    }
+      
+}
+
+
+
+/* posts/show ================================ */
+.show-top{
+ height:110px;
+}
+
+.show-name{
+  font-size:40px;
+  line-height:110px;
+}
+
+.show-sub{
+  height:90px;
+}
+
+.show-like{
+  font-size:25px;
+  float:left;
+  padding-left:40px;
+}
+
+.show-like a{
+  text-decoration:none;
+  color:red;
+}
+
+.fa-thumbs-up:hover{
+  font-size:28px;
+  text-decoration:none;
+  color:red;
+}
+
+.show-comment-count{
+  font-size:25px;
+  padding-left:40px;
+  float:left;
+}
+
+.review a{
+  font-size:25px;
+  text-decoration:none;
+  color:black;
+  margin-left:40px;
+  background-color:#ccc;
+}
+
+.review a:hover{
+  color:red;
+}
+
+.show-content {
+  width:1200px;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.show-box{
+  background-color:white;
+  box-shadow: 0 2px 12px #c1ced7;
+  height:150px;
+}
+
+.show-user-name{
+  font-size:20px;
+  padding-left:40px;
+}
+
+.show-user-name a{
+  color:black;
+}
+
+.show-user-name a:hover{
+  color:red;
+  text-decoration:none;
+}
+
+.show-comment{
+word-wrap: break-word;
+width:1200px;
+}
+
+@media screen and (max-width: 670px){
+      .show-top{
+     height:50px;
+     width:100%;
+     box-sizing:border-box;
+    }
+    
+    .show-name{
+      font-size:20px;
+      line-height:50px;
+      padding-left:10px;
+      
+    }
+    
+    .show-sub{
+      height:auto;
+    }
+    
+    .show-like{
+      font-size:15px;
+      float:left;
+      padding-left:20px;
+    }
+
+    .show-comment-count{
+      font-size:15px;
+      padding-left:40px;
+      float:left;
+    }
+    
+    .review{
+      clear:both;
+      width:100%;
+    }
+    .review a{
+      font-size:20px;
+      text-decoration:none;
+      color:black;
+      padding-left:20px;
+    }
+    
+    .show-content {
+      width:100%;
+      word-break: break-all;
+      white-space: normal;
+    }
+    
+    .show-box{
+      background-color:white;
+      box-shadow: 0 2px 12px #c1ced7;
+      height:auto;
+      width:100%;
+      padding:10px;
+    }
+    
+    .show-user-name{
+      font-size:15px;
+      padding-left:40px;
+    }
+    
+    .show-user-name a{
+      color:black;
+    }
+    
+    .show-user-name a:hover{
+      color:red;
+      text-decoration:none;
+    }
+    
+    .show-comment{
+    word-wrap: break-word;
+    width:100%;
+    }
+}
+
+
+/* posts/new ================================ */
+.posts-new textarea {
+  font-size: 20px;
+  padding: 10px;
+  min-height: 140px;
+  border: 1px solid rgb(216, 218, 223);
+  resize: none;
+}
+
+.posts-new textarea::-webkit-input-placeholder {
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.content textarea{
+  width:600px;
+  height:100px;
+}
+
+/* posts/comment ================================ */
+.posts-comment-name{
+  padding-left:20px;
+  font-size:30px;
+}
+
+
+.posts-comment-rating textarea{
+  width:600px;
+  height:200px;
+}
+
+@media screen and (max-width: 670px){
+  .posts-comment-name{
+  padding-left:10px;
+  font-size:15px;
+}
+
+  .posts-comment-rating textarea{
+  width:100%;
+  height:200px;
+}
+}

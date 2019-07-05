@@ -1,0 +1,66 @@
+<%= form_tag("/posts/create") do %>
+
+<h1>ジャンルを選択してください</h1>
+
+<input type="radio" name="genre" value="映画">映画
+<input type="radio" name="genre" value="ドラマ">ドラマ
+<input type="radio" name="genre" value="アニメ">アニメ
+<input type="radio" name="genre" value="アニメ映画">アニメ映画
+<input type="radio" name="genre" value="本">本
+<input type="radio" name="genre" value="マンガ">マンガ
+
+<h1>タイトル（英語だったら英語で）</h1>
+<input name="name">
+
+<h2>タイトルが英語だった場合、訳したタイトル</h2>
+<input name="subname">
+
+<div class="creator">
+ <h2>監督</h2>
+ <input name="creator" value="<%= @post.creator %>">
+</div>
+
+<div class="company">
+ <h2>配給会社</h2>
+ <input name="company" value="<%= @post.company %>">
+</div>
+
+<div class="content">
+ <h2>あらすじ</h2>
+ <textarea name="content"><%= @post.content %></textarea>
+</div>
+ 
+<input type="submit" value="作品を追加">
+
+<% end %>
+
+<script>
+$(document).on('turbolinks:load', function() {
+  //ラジオボタンをチェックしたら発動
+  $('input[type="radio"]').change(function() {
+ 
+    //選択したvalue値を変数に格納
+    var val = $(this).val();
+ 
+    //選択したvalue値をp要素に出力
+    if(val=='映画'){
+      $('.creator h2').text('監督');
+      $('.company h2').text('配給会社');
+    }else if(val=='ドラマ'){
+      $('.creator h2').text('脚本');
+      $('.company h2').text('放送局');
+    }else if(val=='アニメ'||val=='アニメ映画'){
+      $('.creator h2').text('監督');
+      $('.company h2').text('制作会社');
+    }else if(val=='本'){
+      $('.creator h2').text('著者');
+      $('.company h2').text('出版社');
+    }else if(val=='マンガ'){
+      $('.creator h2').text('著者');
+      $('.company h2').text('掲載雑誌');
+    }
+  });
+});
+</script>
+
+

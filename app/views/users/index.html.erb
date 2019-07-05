@@ -1,0 +1,24 @@
+
+    　<% @users.each do |user| %>
+      　<div class="users-index-item">
+      　　    <div class="user-index-image">
+              <i class="fas fa-user-circle"></i>
+            </div>
+          
+            <div class="user-index-name">
+              <%= link_to(user.name, "/users/#{user.id}") %>
+            </div>
+        
+            <div class="user-index-like">
+              <% @likes=Like.where(user_id: user.id) %>
+              <i class="far fa-thumbs-up"></i>
+              <span>いいね数:</span>  <%= link_to(@likes.count, "/users/#{user.id}/likes") %>
+            </div>
+          
+            <div class="user-index-comment">
+              <% @comments=Comment.where(user_id: user.id) %>
+              <span>コメント数:</span> <%= link_to(@comments.count, "/users/#{user.id}") %><span>件</span>
+            </div>
+        </div>
+      <% end %>
+  

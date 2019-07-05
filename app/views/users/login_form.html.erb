@@ -1,0 +1,19 @@
+<h1>新規の方はこちら</h1>
+<%= link_to("新規登録", "/signup") %>
+
+
+<h1>ログイン</h1>
+
+          <div class="form-error">
+            <%= @error_message %>
+          </div>
+        
+
+        <%= form_tag("/login") do %>
+          <p>メールアドレス</p>
+          <input name="email" value="<%= @email %>">
+          <p>パスワード</p>
+          <input type="password" name="password" value="<%= @password %>">
+          <input type="submit" value="ログイン">
+        <% end %>
+     

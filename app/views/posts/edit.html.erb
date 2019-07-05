@@ -1,0 +1,99 @@
+<% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+            <% end %>
+
+<%=form_tag("/posts/#{@post.id}/update") do %>
+
+<h1><%= @post.name %></h1>
+
+<span>ジャンル:</span><h2><%= @post.genre %></h2>
+  
+<% if @post.genre=="映画" %>
+  <h2>監督</h2>
+  <input name="creator" value="<%= @post.creator %>">
+  <h2>配給会社</h2>
+  <input name="company" value="<%= @post.company %>">
+  <h2>あらすじ</h2>
+  <textarea name="content"><%= @post.content %></textarea>
+　<input type="submit" value="追加または編集">
+
+ <% elsif @post.genre=="ドラマ" %>
+　<h2>脚本</h2>
+  <input name="creator" value="<%= @post.creator %>">
+  <h2>放送局</h2>
+  <input name="company" value="<%= @post.company %>">
+  <h2>あらすじ</h2>
+  <textarea name="content"><%= @post.content %></textarea>
+  <input type="submit" value="追加または編集">
+  
+   <% elsif @post.genre=="アニメ" %>
+　<h2>監督</h2>
+  <input name="creator" value="<%= @post.creator %>">
+  <h2>制作会社</h2>
+  <input name="company" value="<%= @post.company %>">
+  <h2>あらすじ</h2>
+  <textarea name="content"><%= @post.content %></textarea>
+  <input type="submit" value="追加または編集">
+  
+   <% elsif @post.genre=="アニメ映画" %>
+　<h2>監督</h2>
+  <input name="creator" value="<%= @post.creator %>">
+  <h2>制作会社</h2>
+  <input name="company" value="<%= @post.company %>">
+  <h2>あらすじ</h2>
+  <textarea name="content"><%= @post.content %></textarea>
+  <input type="submit" value="追加または編集">
+  
+   <% elsif @post.genre=="本" %>
+　<h2>著者</h2>
+  <input name="creator" value="<%= @post.creator %>">
+  <h2>出版社</h2>
+  <input name="company" value="<%= @post.company %>">
+  <h2>あらすじ</h2>
+  <textarea name="content"><%= @post.content %></textarea>
+  <input type="submit" value="追加または編集">
+  
+   <% elsif @post.genre=="マンガ" %>
+　<h2>作家</h2>
+  <input name="creator" value="<%= @post.creator %>">
+  <h2>掲載雑誌</h2>
+  <input name="company" value="<%= @post.company %>">
+  <h2>あらすじ</h2>
+  <textarea name="content"><%= @post.content %></textarea>
+　<input type="submit" value="追加または編集">
+
+
+<% end %>
+
+<% end %>
+
+<script>
+$(document).on('turbolinks:load', function() {
+  //ラジオボタンをチェックしたら発動
+  $('input[type="radio"]').change(function() {
+ 
+    //選択したvalue値を変数に格納
+    var val = $(this).val();
+ 
+    //選択したvalue値をp要素に出力
+    if(val=='映画'){
+      $('.creator h2').text('監督');
+      $('.company h2').text('配給会社');
+    }else if(val=='ドラマ'){
+      $('.creator h2').text('脚本');
+      $('.company h2').text('放送局');
+    }else if(val=='アニメ'||val=='アニメ映画'){
+      $('.creator h2').text('監督');
+      $('.company h2').text('制作会社');
+    }else if(val=='本'){
+      $('.creator h2').text('著者');
+      $('.company h2').text('出版社');
+    }else if(val=='マンガ'){
+      $('.creator h2').text('著者');
+      $('.company h2').text('掲載雑誌');
+    }
+  });
+});
+</script>

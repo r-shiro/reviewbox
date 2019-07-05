@@ -1,0 +1,130 @@
+<div class="show-top">
+    <div class="show-name">
+        <% if @post %>
+            <%= @post.name %>
+            <% if @post.subname %>
+                <%= @post.subname %>
+            <% end %>
+            <% if @current_user.id==14 %>
+            <%= link_to("編集","/posts/#{@post.id}/edit") %>
+            <% end %>
+    </div>
+</div>
+
+<div class="show-sub">
+    <div class="show-like">
+        <% if Like.find_by(user_id: @current_user,post_id: @post.id) %>
+            <%=link_to("/likes/#{@post.id}/destroy",{method:"post"}) do %>
+            <span class="fa_icon fas fa-thumbs-up" ></span>
+            <% end %>
+        <% else %>
+            <%=link_to("/likes/#{@post.id}/create",{method:"post"}) do %>
+            <span class="fa_icon far fa-thumbs-up" ></span>
+            <% end %>
+        <% end %>
+
+         <% @likes=Like.where(post_id: @post.id) %>
+         <span>いいね数: </span><%= @likes.count %>
+    </div>
+        <div class="show-comment-count">
+            <% @comments=Comment.where(post_id: @post.id) %>
+            <span>コメント数:</span> <%= @comments.count %><span>件</span>
+        </div>
+        <div class="review">
+            <%= link_to("評価、レビューを書く","/posts/#{@post.id}/comments") %>
+        </div>
+        <div class="show-content">
+               <span>あらすじ:</span><%= @post.content %>
+        </div>
+</div>
+
+<div class="show-boxs">
+    <% @comments.each do |comment| %>
+        <div class="show-box">
+            <div class="show-user-name">
+                <%  @user=User.find_by(id: comment.user_id) %>
+                <%= link_to(@user.name,"/users/#{@user.id}") %>
+            </div>
+            <div class="show-rating">
+               <% if comment.rating==0.5 %>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+               <% elsif comment.rating==1.0 %>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+               <% elsif comment.rating==1.5 %>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+               <% elsif comment.rating==2.0 %>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+               <% elsif comment.rating==2.5 %>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+               <% elsif comment.rating==3.0 %>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+               <% elsif comment.rating==3.5 %>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+               <% elsif comment.rating==4.0 %>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+               <% elsif comment.rating==4.5 %>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               <% elsif comment.rating==5.0 %>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+               <% else %>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+               <% end %>
+            </div>
+            <div class="show-date">
+                <%= comment.created_at.strftime("%Y年%m月%d日") %>
+            </div>
+            <div class="show-comment">
+                <%= comment.comment %>
+            </div>
+        </div>
+       <% end %>
+       
+       
+  
+</div>
+ 
+<% end %>

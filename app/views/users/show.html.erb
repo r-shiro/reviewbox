@@ -1,0 +1,120 @@
+<div class="users-show-head">
+  <div class="users-show-image">
+    <i class="fas fa-user-circle"></i>
+  </div>
+  <div class="users-show-name">
+    <%= @user.name %>
+  </div>
+  <% if @current_user==@user %>
+  <div class="users-show-edit">
+    <%=link_to("編集","/users/#{@user.id}/edit") %>
+  </div>
+  <div class="users-show-logout">
+    <%= link_to("ログアウト", "/logout", {method: :post}) %>
+  </div>
+  <% end %>
+</div>
+
+<ul class="users-tabs">
+      <li class="active"><%= link_to("コメント", "/users/#{@user.id}") %></li>
+      <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
+    
+    <% @comment.each do |comment| %>
+    <div class="users-show-box">
+        <% @post=Post.find_by(id: comment.post_id) %>
+        <% if @post %>
+          <div class="users-show-post-name">
+            <%= link_to(@post.name, "/posts/#{@post.id}") %>
+          </div>
+          
+          <div class="users-show-post-rating">
+          <% if comment.rating<=0.5 %>
+              <i class="fas fa-star-half-alt"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+          <% elsif comment.rating<=1.0&&comment.rating>0.5 %>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+      　　<% elsif comment.rating<=1.5&&comment.rating>1.0 %>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+      　　<% elsif comment.rating<=2.0&&comment.rating>1.5 %>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+          <% elsif comment.rating<=2.5&&comment.rating>2.0 %>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+          <% elsif comment.rating<=3.0&&comment.rating>2.5 %>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+          <% elsif comment.rating<=3.5&&comment.rating>3.0 %>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <i class="far fa-star"></i>
+          <% elsif comment.rating<=4.0&&comment.rating>3.5 %>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+          <% elsif comment.rating<=4.5&&comment.rating>4.0 %>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+          <% elsif comment.rating<=5&&comment.rating>4.5 %>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+          <% else %>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+          <% end %>
+          <span><%= comment.rating %></span>
+          </div>
+          
+          <div class="users-show-post-created">
+            <%= comment.created_at.strftime("%Y年%m月%d日") %>
+          </div>
+          
+          <div class="users-show-post-comment">
+              <%= comment.comment %>
+          </div>
+          
+          <% if @current_user == @user %>
+            <div class="users-show-post-destroy">
+            <%= link_to("削除","/comments/#{@post.id}/destroy", {method: "post"}) %>
+            </div>
+            <div class="users-show-post-edit">
+            <%= link_to("編集","/comments/#{@post.id}/edit") %>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+    <% end %>

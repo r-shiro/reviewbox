@@ -1,0 +1,157 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+main{
+    height:600px;
+}
+
+
+.main-logo p{
+    
+    font-size:100px;
+    color:red;
+    padding-top:120px;
+    padding-bottom:25px;
+}
+
+@media screen and (max-width: 1000px) {
+   .main-logo p{
+    
+    font-size:80px;
+    padding-top:120px;
+    padding-bottom:25px;
+}
+}
+
+@media screen and (max-width: 670px) {
+   .main-logo p{
+    
+    font-size:45px;
+    padding-top:100px;
+    padding-bottom:25px;
+}
+}
+
+.mx-auto form{
+  height:30px;
+  width:400px;
+  position:relative;
+  margin:0 auto;
+}
+
+@media screen and (max-width: 1000px){
+  .mx-auto form{
+    width:320px;
+  }
+}
+
+@media screen and (max-width: 670px){
+  .mx-auto form{
+    width:230px;
+  }
+}
+
+.mx-auto form input[type=text]{
+  width:420px;
+  height:40px;
+  padding:4px 40px 4px 8px;
+  border:none;
+  -webkit-border-radius:32px;
+     -moz-border-radius:32px;
+          border-radius:32px;
+  -webkit-appearance: none;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position:absolute;
+  background:#EEEEEE;
+  top:0;
+  right:0;
+  backface-visibility: hidden;
+  -webkit-transition: 0.25s ease-out;
+     -moz-transition: 0.25s ease-out;
+       -o-transition: 0.25s ease-out;
+          transition: 0.25s ease-out;
+}
+
+@media screen and (max-width: 1000px){
+  .mx-auto form input[type=text]{
+    width:350px;
+    height:35px;
+  }
+}
+
+@media screen and (max-width: 670px){
+  .mx-auto form input[type=text]{
+    width:230px;
+    height:30px;
+  }
+}
+
+.mx-auto form input[type=text]:focus{
+  background:#F6F6F6;
+}
+
+.mx-auto form button{
+  width:32px;
+  height:40px;
+  color:grey;
+  border:none;
+  -webkit-border-radius:16px;
+     -moz-border-radius:16px;
+          border-radius:16px;
+  background:#EEEEEE;
+  display:inline-block;
+  -webkit-appearance: none;
+  outline: 0;
+  position:absolute;
+  top:0;
+  right:0;
+  cursor:pointer;
+  backface-visibility: hidden;
+  -webkit-transition: 0.3s ease-out;
+     -moz-transition: 0.3s ease-out;
+       -o-transition: 0.3s ease-out;
+          transition: 0.3s ease-out;
+}
+
+@media screen and (max-width: 1000px){
+  .mx-auto form button{
+    height:35px;
+  }
+}
+
+@media screen and (max-width: 670px){
+  .mx-auto form button{
+    height:30px;
+  }
+}
+
+.mx-auto form button:hover{
+  opacity:0.8;
+}
+
+
+footer{
+   border-top:3px solid #EEE;
+}
+
+.footer-list li{
+  float:right;
+  list-style:none;
+  line-height:20px;
+  padding-top:10px;
+  padding-right:20px;
+  
+}
+
+.footer-list li a{
+  text-decoration:none;
+}
+
+.footer-list li a:hover{
+  color:red;
+    
+}

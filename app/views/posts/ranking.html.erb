@@ -1,0 +1,171 @@
+<div class="genre-select">
+    <ul>
+        <li class="active">すべて</li>
+        <li class="select"><%= link_to("映画","/posts/ranking/movie") %></li>
+        <li class="select"><%= link_to("ドラマ","/posts/ranking/drama") %></li>
+        <li class="select"><%= link_to("アニメ","/posts/ranking/anime") %></li>
+        <li class="select"><%= link_to("アニメ映画","/posts/ranking/anime_movie") %></li>
+        <li class="select"><%= link_to("本","/posts/ranking/book") %></li>
+        <li class="select"><%= link_to("マンガ","/posts/ranking/manga") %></li>
+    </ul>
+</div>
+    
+   
+　  <% @posts.each do |post| %>
+        <div class="posts-index-item">
+          
+            <div class="index-head">
+                <div class="post-name">
+                    <%= link_to(post.name, "/posts/#{post.id}") %>
+                        <% if post.subname %>
+                            <%= post.subname %>
+                        <% end %>
+                </div>
+          
+                <div class="index-rating">
+                    <% @comments=Comment.where(post_id: post.id) %>
+                    
+                    <% if post.average!=nil %>
+                        <% if post.average<=0.5 %>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        <% elsif post.average<=1.0&&post.average>0.5 %>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                    　　<% elsif post.average<=1.5&&post.average>1.0 %>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                    　　<% elsif post.average<=2.0&&post.average>1.5 %>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        <% elsif post.average<=2.5&&post.average>2.0 %>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        <% elsif post.average<=3.0&&post.average>2.5 %>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        <% elsif post.average<=3.5&&post.average>3.0 %>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        <% elsif post.average<=4.0&&post.average>3.5 %>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        <% elsif post.average<=4.5&&post.average>4.0 %>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        <% elsif post.average<=5&&post.average>4.5 %>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        <% else %>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        <% end %>
+         
+                    <% else %>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    <% end %>
+            
+                
+                　　<% if post.average!=nil %>
+                    　　<span><%= post.average %></span>
+                　　<% end %>
+            
+                </div>
+            </div>
+          
+            <div class="post-count">
+                <div class="index-like">
+                    <% if Like.find_by(user_id: @current_user,post_id: post.id) %>
+                        <%=link_to("/likes/#{post.id}/destroy",{method:"post"}) do %>
+                            <span class="fa_icon fas fa-thumbs-up" ></span>
+                        <% end %>
+                    <% else %>
+                        <%=link_to("/likes/#{post.id}/create",{method:"post"}) do %>
+                            <span class="fa_icon far fa-thumbs-up" ></span>
+                        <% end %>
+                    <% end %>
+                </div>
+            
+                <div class="index-like-count">
+                    <% @likes=Like.where(post_id: post.id) %>
+                    <span>いいね数:</span> <%= link_to( @likes.count, "/posts/#{post.id}") %>
+                </div>
+            
+            
+                <div class="comment-count">
+                    <% @comments=Comment.where(post_id: post.id) %>
+                    <span>コメント数:</span> <%= link_to( @comments.count, "/posts/#{post.id}") %><span>件</span>
+                </div>
+            </div>
+          
+            <div class="post-genre">
+                <span>ジャンル:</span><%= link_to(post.genre, "/posts/#{post.id}") %>
+        　  </div>
+        　
+        　  <div class="post-info-space">
+                <div class="post-info">
+                    <% if post.genre=="映画" %>
+                        <span>監督:</span><%= link_to(post.creator, "/posts/#{post.id}") %>
+                        <span>配給会社:</span><%= link_to(post.company, "/posts/#{post.id}") %>
+                    <% elsif post.genre=="ドラマ" %>
+　                      <span>脚本:</span><%= link_to(post.creator, "/posts/#{post.id}") %>
+　                      <span>放送局:</span><%= link_to(post.company, "/posts/#{post.id}") %>
+                    <% elsif post.genre=="アニメ" %>
+　                      <span>監督:</span><%= link_to(post.creator, "/posts/#{post.id}") %>
+　                      <span>制作会社:</span><%= link_to(post.company, "/posts/#{post.id}") %>
+                    <% elsif post.genre=="アニメ映画" %>
+　                      <span>監督:</span><%= link_to(post.creator, "/posts/#{post.id}") %>
+　                      <span>制作会社:</span><%= link_to(post.company, "/posts/#{post.id}") %>
+                    <% elsif post.genre=="本" %>
+　                      <span>著者:</span><%= link_to(post.creator, "/posts/#{post.id}") %>
+　                      <span>出版社:</span><%= link_to(post.company, "/posts/#{post.id}") %>
+                    <% elsif post.genre=="マンガ" %>
+　                      <span>作家:</span><%= link_to(post.creator, "/posts/#{post.id}") %>
+　                      <span>掲載雑誌:</span><%= link_to(post.company, "/posts/#{post.id}") %>
+　                  <% end %>          
+                </div> 
+            </div>
+          
+            <div class="post-content">
+                <span>あらすじ:</span>　<%= post.content %>
+            </div>
+        
+        </div> 
+    <% end %>

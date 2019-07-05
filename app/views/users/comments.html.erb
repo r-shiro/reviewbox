@@ -1,0 +1,11 @@
+<!-- 指定されたコードを貼り付けてください -->
+
+    
+    <!-- 変数@likesに対してeach文を用いてください -->
+    <% @comments.each do |comment| %>
+      <!-- 変数postを定義してください -->
+      <% post = Post.find_by(id: comment.post_id) %>
+     
+    <% end %>
+  </div>
+</div>

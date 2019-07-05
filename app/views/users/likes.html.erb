@@ -1,0 +1,42 @@
+<div class="users-show-head">
+  <div class="users-show-image">
+    <i class="fas fa-user-circle"></i>
+  </div>
+  <div class="users-show-name">
+    <%= @user.name %>
+  </div>
+  <% if @current_user==@user %>
+  <div class="users-show-edit">
+    <%=link_to("編集","/users/#{@user.id}/edit") %>
+  </div>
+  <div class="users-show-logout">
+    <%= link_to("ログアウト", "/logout", {method: :post}) %>
+  </div>
+  <% end %>
+</div>
+
+<ul class="users-tabs">
+      <li><%= link_to("コメント", "/users/#{@user.id}") %></li>
+      <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
+    
+    
+    <% @like.each do |like| %>
+      <div class="users-likes-box">
+        <% @post=Post.find_by(id: like.post_id) %>
+        <% if @post %>
+          <div class="users-likes-name">
+            <%= link_to("#{@post.name}", "/posts/#{@post.id}") %>
+          </div>
+          <div class="users-likes-created">
+            <%= @post.created_at.strftime("%Y年%m月%d日") %>
+          </div>
+          <div class="users-likes-destroy">
+            <% if @current_user==@user %>
+            <%=link_to("いいねを取り消す","/likes/#{@post.id}/destroy",{method:"post"}) %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    
